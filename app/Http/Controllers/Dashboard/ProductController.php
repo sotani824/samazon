@@ -70,26 +70,20 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
+        if ($request->input('recommend') == 'on') {
+            $product->recommend_flag = true;
+        } else {
+            $product->recommend_flag = false;
+        }
         $product->save();
 
         return redirect()->route('dashboard.products.index');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -103,7 +97,7 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -112,6 +106,11 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->input('category_id');
+        if ($request->input('recommend') == 'on') {
+            $product->recommend_flag = true;
+        } else {
+            $product->recommend_flag = false;
+        }
         $product->update();
 
         return redirect()->route('dashboard.products.index');
@@ -120,7 +119,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
