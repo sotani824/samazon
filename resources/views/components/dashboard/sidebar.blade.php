@@ -8,8 +8,10 @@
     <div class="d-flex flex-column">
         <label class="samazon-sidebar-category-label">
             <a href="/dashboard/products">商品一覧</a>
-　      </label>
-        <label class="samazon-sidebar-category-label">親カテゴリ管理</label>
+        </label>
+        <label class="samazon-sidebar-category-label">
+            <a href="/dashboard/major_categories">親カテゴリ管理</a>
+        </label>
         <label class="samazon-sidebar-category-label">
             <a href="/dashboard/categories">カテゴリ管理</a>
 　       </label>
