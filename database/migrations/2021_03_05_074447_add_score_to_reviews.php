@@ -14,7 +14,7 @@ class AddScoreToReviews extends Migration
     public function up()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            //
+            $table->integer('score')->unsigned()->default(0);
         });
     }
 
