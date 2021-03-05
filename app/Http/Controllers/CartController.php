@@ -22,7 +22,7 @@ class CartController extends Controller
 
         foreach ($cart as $c) {
             if($c->options->carriage) {
-                $total += ($c->qty * ($c->price + 800));
+                $total += ($c->qty * ($c->price + env('CARRIAGE')));
             } else {
                 $total += $c->qty * $c->price;
             }

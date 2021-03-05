@@ -27,6 +27,7 @@
                 <input type="hidden" name="id" value="{{$product->id}}">
                 <input type="hidden" name="name" value="{{$product->name}}">
                 <input type="hidden" name="price" value="{{$product->price}}">
+                <input type="hidden" name="carriage" value="{{$product->carriage_flag}}">
                 <div class="form-group row">
                     <label for="quantity" class="col-sm-2 col-form-label">数量</label>
                     <div class="col-sm-10">
@@ -65,18 +66,20 @@
         </div>
 
         <div class="offset-1 col-10">
+
             <div class="row">
                 @foreach($reviews as $review)
-                <div class="offset-md-5 col-md-5">
+                <div class="offset-md-5 col-md-5 mt-3">
                     <h3 class="review-score-color">{{ str_repeat('★', $review->score) }}</h3>
                     <p class="h3">{{$review->content}}</p>
+                    <h4>{{$review->user->name}}</h4>
                     <label>{{$review->created_at}}</label>
                 </div>
                 @endforeach
             </div>
 
             @auth
-            <div class="row">
+            <div class="row mt-5">
                 <div class="offset-md-5 col-md-5">
                     <form method="POST" action="/products/{{ $product->id }}/reviews">
                         {{ csrf_field() }}

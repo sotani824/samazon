@@ -34,10 +34,14 @@
                 <h3 class="w-100 mt-4">{{$product->qty}}</h3>
             </div>
             <div class="col-md-2">
+                @if ($product->carriage_flag)
                 <h3 class="w-100 mt-4">￥{{$product->qty * $product->price}}</h3>
+                @else
+                <h3 class="w-100 mt-4">￥{{$product->qty * ($product->price + env('CARRIAGE'))}}</h3>
+                @endif
             </div>
-            @endforeach            
         </div>
+        @endforeach
 
         <hr>
 
@@ -54,6 +58,7 @@
                 </div>
             </div>
         </div>
+
         <form method="post" action="{{route('carts.destroy')}}" class="d-flex justify-content-end mt-3">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="DELETE">
@@ -79,6 +84,7 @@
                 </div>
             </div>
         </form>
+
     </div>
 </div>
 @endsection
