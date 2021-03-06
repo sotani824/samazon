@@ -45,6 +45,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::resource('major_categories', 'Dashboard\MajorCategoryController')->middleware('auth:admins');
     Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
     Route::get('orders', 'Dashboard\OrderController@index')->middleware('auth:admins');
+    Route::get('products/import/csv', 'Dashboard\ProductController@import')->middleware('auth:admins');
+    Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
 
 if (env('APP_ENV') === 'production') {
