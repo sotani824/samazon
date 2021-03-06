@@ -30,12 +30,12 @@
         <div class="d-flex justify-content-center">
             <div class="container w-50">
                 <h3>登録済みのクレジットカード</h3>
-
+                @unless (empty($card))
                 <hr>
                 <h4>{{ $card["brand"] }}</h4>
                 <p>有効期限: {{ $card["exp_year"] }}/{{ $card["exp_month"] }}</p>
                 <p>カード番号: ************{{ $card["last4"] }}</p>
-
+                @endunless
                 <form action="/users/mypage/token" method="post">
                     @csrf
                     @if (empty($card))

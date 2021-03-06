@@ -103,16 +103,18 @@ class UserController extends Controller
     }
 
     public function register_card(Request $request)
-    {
+    {        
         $user = Auth::user();
 
         $pay_jp_secret = env('PAYJP_SECRET_KEY');
         \Payjp\Payjp::setApiKey($pay_jp_secret);
-
+        
         $card = [];
         $count = 0;
+        
 
         if ($user->token != "") {
+
             $result = \Payjp\Customer::retrieve($user->token)->cards->all(array("limit"=>1))->data[0];
             $count = \Payjp\Customer::retrieve($user->token)->cards->all()->count;
 
